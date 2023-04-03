@@ -1,0 +1,40 @@
+<div class="overlay-container">
+  <form class="overlay">
+    <h2>Project Description</h2>
+    <label>Project Name</label>
+    <br>
+    <input type="text">
+    <br>
+    <label>Ip Address</label>
+    <br>
+    <input type="text">
+    <br>
+    <label>Port</label>
+    <br>
+    <input type="text">
+    <br>
+    <label>Category </label>
+    <br>
+
+    <div class="optionbox">
+      <select>
+        <option value="">-- Select Category --</option>
+        <optgroup label="Infrastructure">
+          <option> VMs</option>
+          <option> K8s Cluster</option>
+          <option>Server</option>
+          <option>Docker Container</option>
+        </optgroup>
+
+        <optgroup label="Application">
+          <option>Application</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <button type="submit" class="modal__btn" >Save</button>
+
+    <button class="modal__btn" (click)="closeModal()">Close</button>
+
+  </form>
+</div>
