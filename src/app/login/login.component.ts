@@ -13,10 +13,6 @@ export class LoginComponent {
   goToHomePage(): void {
     this.router.navigate(['/home']);
 
-    const state = { page: 'home' };
-    const title = 'Home';
-    const url = `/home?_=${Date.now()}`;
-    history.pushState(state, title, url);
   }
 
 
