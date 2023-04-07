@@ -1,37 +1,44 @@
-import { Component,ViewChild } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Router } from '@angular/router';
-import { PopupmetricComponent } from '../popupmetric/popupmetric.component';
-import { MatDialog } from '@angular/material/dialog';
-
-
-
+import { Component, OnInit } from '@angular/core';
+import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
 @Component({
   selector: 'app-metricsinterface',
   templateUrl: './metricsinterface.component.html',
   styleUrls: ['./metricsinterface.component.css']
 })
-export class MetricsinterfaceComponent {
-  @ViewChild(PopupmetricComponent) popup!: PopupmetricComponent;
-
-  status = false;
-
+export class MetricsinterfaceComponent implements OnInit {
   
+  options: GridsterConfig;
+  dashboard: Array<GridsterItem>;
 
-  constructor(private router: Router,public dialog: MatDialog) {   
+  constructor() {
+    this.options = {
+      // add your gridster options here
+    };
+    this.dashboard= [];
   }
 
-  goToPopup(){
-    this.status = !this.status;
+  ngOnInit(): void {
+    this.options = {
+      itemChangeCallback: this.itemChange.bind(this),
+      gridType: 'fit',
+      displayGrid: 'onDrag&Resize',
+      draggable: {
+        enabled: true
+      },
+      resizable: {
+        enabled: true
+      }
+    };
+    
+    this.dashboard = [
+      {cols: 2, rows: 2, x: 0, y: 0},
+      {cols: 1, rows: 1, x: 2, y: 0},
+      {cols: 1, rows: 1, x: 3, y: 0}
+    ];
   }
 
-  openPopup() {
-    const dialogRef = this.dialog.open(PopupmetricComponent);
-  
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  itemChange(item: GridsterItem, itemComponent: any): void {
+    console.info(`item ${itemComponent} has been changed to ${JSON.stringify(item)}`);
   }
-  
 }

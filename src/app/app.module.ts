@@ -16,6 +16,10 @@ import { RouterModule } from '@angular/router';
 import { MetricsinterfaceComponent } from './metricsinterface/metricsinterface.component';
 import { MetricsmenuComponent } from './metricsmenu/metricsmenu.component';
 import { PopupmetricComponent } from './popupmetric/popupmetric.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { GridsterModule } from 'angular-gridster2';
+import { DndModule } from 'ngx-drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { PopupmetricComponent } from './popupmetric/popupmetric.component';
   ],
   imports: [
     BrowserModule,MatDialogModule,
-    BrowserAnimationsModule,FormsModule,ReactiveFormsModule,CommonModule,AppRoutingModule
+    BrowserAnimationsModule,FormsModule,ReactiveFormsModule,CommonModule,AppRoutingModule,
+    DragDropModule,MatDialogModule,GridsterModule,DndModule
+
+
 
 
   ],
